@@ -1,0 +1,13 @@
+{
+  "name": "widget",
+  "version": "0.0.1",
+  "description": "desc",
+  "main": "index.js",
+  "author": "Irene Oppo",
+  "license": "MIT",
+  "dependencies": {
+    "@lyket/react": "^1.0.4",
+    "preact": "^10.4.8",
+    "preact-habitat": "^3.3.0"
+  }
+}
