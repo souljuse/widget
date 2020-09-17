@@ -2,8 +2,19 @@ import { h, Component } from "preact";
 import habitat from "preact-habitat";
 import { Provider, LikeButton, UpdownButton, ClapButton } from "@lyket/react";
 
-const HelloWidget = ({ ...props }) => {
-  const { id, type, namespace } = props;
+const LyketWidget = ({ ...props }) => {
+  const { id, type, namespace, theme, apiKey } = props;
+  console.log(props);
+
+  if (!apiKey) {
+    console.error("Lyket widget Error: missing key");
+    return null;
+  }
+
+  if (!id) {
+    console.error("Lyket widget Error: missing ID");
+    return null;
+  }
 
   const getComponent = () => {
     switch (type) {
@@ -18,14 +29,10 @@ const HelloWidget = ({ ...props }) => {
 
   const component = getComponent();
 
-  return (
-    <Provider apiKey="xxx" baseUrl="http://localhost:3000">
-      {component}
-    </Provider>
-  );
+  return <Provider apiKey={apiKey}>{component}</Provider>;
 };
 
-const helloWidgetHabitat = habitat(HelloWidget);
+const helloWidgetHabitat = habitat(LyketWidget);
 
 helloWidgetHabitat.render({
   selector: ".lyket-add-button"
